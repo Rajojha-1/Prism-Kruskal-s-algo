@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kruskal MST Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <a class="nav-link" href="index.html">Prim</a>
+            <a class="nav-link active" href="kruskal.html">Kruskal</a>
+        </div>
+        <h1>Kruskal's Minimum Spanning Tree Visualization</h1>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="vertices">Number of Vertices:</label>
+                <input type="number" id="vertices" min="2" max="10" value="5">
+            </div>
+
+            <div class="input-group">
+                <label for="edgeListInput">Kruskal Input Format (V, E, then u v w):</label>
+                <textarea id="edgeListInput" rows="6" placeholder="4
+5
+0 1 10
+0 2 6
+0 3 5
+1 3 15
+2 3 4"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button id="startBtn">Start Kruskal's Algorithm</button>
+                <button id="resetBtn">Reset</button>
+                <button id="pauseBtn" disabled>Pause</button>
+                <button id="resumeBtn" disabled>Resume</button>
+                <button id="prevBtn" disabled>Previous Step</button>
+                <button id="nextBtn" disabled>Next Step</button>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <div class="left-panel">
+                <div class="visualization-section">
+                    <canvas id="graphCanvas"></canvas>
+                </div>
+            </div>
+
+            <div class="middle-panel">
+                <div class="info-box matrix-box">
+                    <h3>Sorted Edges (Kruskal Order)</h3>
+                    <div id="edgeTableDisplay"></div>
+                </div>
+
+                <div class="info-box">
+                    <h3>MST Information</h3>
+                    <div id="mstInfo">
+                        <p><strong>Total Cost:</strong> <span id="totalCost">0</span></p>
+                        <p><strong>Edges in MST:</strong></p>
+                        <ul id="mstEdges"></ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Output (u v w + cost)</h3>
+                    <pre id="resultOutput" class="output-block"></pre>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="info-box">
+                    <h3>Algorithm Status</h3>
+                    <div id="statusInfo">
+                        <p id="currentStep">Ready to start...</p>
+                        <p><strong>Current Step:</strong> <span id="stepNumber">0</span> / <span id="totalSteps">0</span></p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Set Status</h3>
+                    <div id="verticesStatus">
+                        <p><strong>Components:</strong> <span id="visitedVertices" class="vertex-list">{}</span></p>
+                        <p><strong>Processed Edges:</strong> <span id="unvisitedVertices" class="vertex-list">0</span></p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Edge Decisions</h3>
+                    <div id="availableEdges">
+                        <p class="hint">Green = selected in MST, Red = rejected (cycle)</p>
+                        <ul id="edgesList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="kruskal.js"></script>
+</body>
+</html>

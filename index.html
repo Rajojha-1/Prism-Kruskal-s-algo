@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prim's MST Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <a class="nav-link active" href="index.html">Prim</a>
+            <a class="nav-link" href="kruskal.html">Kruskal</a>
+        </div>
+        <h1>Prim's Minimum Spanning Tree Visualization</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="vertices">Number of Vertices:</label>
+                <input type="number" id="vertices" min="2" max="10" value="5">
+            </div>
+            
+            <div class="input-group">
+                <label for="matrix">Adjacency Matrix (space-separated, 0 for no edge):</label>
+                <textarea id="matrix" rows="5" placeholder="Enter adjacency matrix...
+Example for 5 vertices:
+0 2 0 6 0
+2 0 3 8 5
+0 3 0 0 7
+6 8 0 0 9
+0 5 7 9 0"></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button id="startBtn">Start Prim's Algorithm</button>
+                <button id="resetBtn">Reset</button>
+                <button id="pauseBtn" disabled>Pause</button>
+                <button id="resumeBtn" disabled>Resume</button>
+                <button id="prevBtn" disabled>Previous Step</button>
+                <button id="nextBtn" disabled>Next Step</button>
+            </div>
+        </div>
+        
+        <div class="main-layout">
+            <div class="left-panel">
+                <div class="visualization-section">
+                    <canvas id="graphCanvas"></canvas>
+                </div>
+            </div>
+            
+            <div class="middle-panel">
+                <div class="info-box matrix-box">
+                    <h3>Adjacency Matrix</h3>
+                    <div id="matrixDisplay"></div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>MST Information</h3>
+                    <div id="mstInfo">
+                        <p><strong>Total Cost:</strong> <span id="totalCost">0</span></p>
+                        <p><strong>Edges in MST:</strong></p>
+                        <ul id="mstEdges"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="info-box">
+                    <h3>Algorithm Status</h3>
+                    <div id="statusInfo">
+                        <p id="currentStep">Ready to start...</p>
+                        <p><strong>Current Step:</strong> <span id="stepNumber">0</span> / <span id="totalSteps">0</span></p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Vertices Status</h3>
+                    <div id="verticesStatus">
+                        <p><strong>Visited:</strong> <span id="visitedVertices" class="vertex-list">{}</span></p>
+                        <p><strong>Unvisited:</strong> <span id="unvisitedVertices" class="vertex-list">{}</span></p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Available Edges</h3>
+                    <div id="availableEdges">
+                        <p class="hint">Edges from visited → unvisited vertices</p>
+                        <ul id="edgesList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
